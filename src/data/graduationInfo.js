@@ -24,7 +24,7 @@ export const graduationInfo = {
     center: "Trung tâm Hội nghị Quốc gia",
     university: "Trường Đại học FPT",
     address: "Cổng số 1, Đại lộ Thăng Long, phường Từ Liêm, Hà Nội",
-    googleMapsUrl: "https://maps.app.goo.gl/B5p79x3D7z3N7S4Q7",
+    googleMapsUrl: "https://www.google.com/maps/dir//Trung+t%C3%A2m+H%E1%BB%99i+ngh%E1%BB%8B+Qu%E1%BB%91c+gia+(NCC),+Trung+t%C3%A2m+h%E1%BB%99i+ngh%E1%BB%8B+qu%E1%BB%91c+gia,+%C4%90%C6%B0%E1%BB%9Dng+Ph%E1%BA%A1m+H%C3%B9ng,+T%E1%BB%AB+Li%C3%AAm,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam/@21.0201817,105.7628878,14.47z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3135acac08698957:0xcb92e58f7f3e275c!2m2!1d105.787608!2d21.0056259?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D",
     googleCalendarUrl: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=L%E1%BB%85+T%E1%BB%91t+Nghi%E1%BB%87p+2026+-+Nguy%E1%BB%85n+Kim+D%C6%B0%C6%A1ng&dates=20260916T060000Z/20260916T100000Z&details=L%E1%BB%85+T%E1%BB%91t+Nghi%E1%BB%87p+2026+%E2%80%9CRISING+TOGETHER+WITH+THE+NATION%E2%80%9D+-+Tr%C6%B0%E1%BB%9Dng+%C4%90%E1%BA%A1i+h%E1%BB%8Dc+FPT&location=H%E1%BB%99i+tr%C6%B0%E1%BB%9Dng+MMH,+Trung+t%C3%A2m+H%E1%BB%99i+ngh%E1%BB%8B+Qu%E1%BB%91c+gia,+C%E1%BB%95ng+s%E1%BB%91+1,+%C4%90%E1%BA%A1i+l%E1%BB%99+Th%C4%83ng+Long,+H%C3%A0+N%E1%BB%99i"
   },
   schedule: [

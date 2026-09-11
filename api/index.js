@@ -1,9 +1,15 @@
 import fs from 'fs';
 import path from 'path';
+import { guestList } from '../src/data/guestList.js';
 
 export default function handler(req, res) {
   // Read the 'to' or 'name' query parameter
-  const name = req.query.to || req.query.name;
+  let name = req.query.to || req.query.name;
+  
+  // Ánh xạ ID rút gọn sang tên thật nếu có
+  if (name && guestList[name]) {
+    name = guestList[name];
+  }
   
   // Path to the built index.html
   const filePath = path.resolve(process.cwd(), 'dist', 'index.html');

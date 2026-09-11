@@ -1,4 +1,5 @@
 import { ImageResponse } from '@vercel/og';
+import { guestList } from '../src/data/guestList.js';
 
 export const config = {
   runtime: 'edge',
@@ -8,7 +9,12 @@ export default async function handler(req) {
   try {
     const { searchParams } = new URL(req.url);
     const hasName = searchParams.has('name');
-    const name = hasName ? searchParams.get('name').slice(0, 100) : 'Khách Quý';
+    let name = hasName ? searchParams.get('name').slice(0, 100) : 'Khách Quý';
+    
+    // Ánh xạ ID rút gọn sang tên thật nếu có
+    if (guestList[name]) {
+      name = guestList[name];
+    }
 
     return new ImageResponse(
       (

@@ -1,7 +1,10 @@
+import { guestList } from './guestList';
+
 export const guests = [
+
   {
     slug: "ban-be",
-    name: "Bạn Thân Mến",
+    name: "Bạn Mộng Linh",
     prefix: "Kính gửi",
     role: "Người bạn trân quý",
     customNote: "Cảm ơn bạn đã luôn đồng hành, sẻ chia những khoảnh khắc thanh xuân đáng nhớ nhất suốt những năm tháng đại học.",
@@ -92,6 +95,18 @@ const parseSlugSalutation = (slug) => {
 export const resolveGuest = (slug, searchParams) => {
   // 1. Khởi tạo từ slug mặc định hoặc tìm trong danh sách sẵn có
   const cleanSlug = (slug || 'ban-be').toLowerCase();
+  
+  // Kiểm tra nếu dùng ID rút gọn trên đường dẫn (ví dụ /graduation/1)
+  if (guestList[cleanSlug]) {
+    return {
+      slug: cleanSlug,
+      name: guestList[cleanSlug],
+      prefix: 'Kính gửi',
+      role: 'Khách mời trân quý',
+      relation: 'Khách mời'
+    };
+  }
+
   const matched = guests.find((g) => g.slug.toLowerCase() === cleanSlug);
 
   let baseGuest;
@@ -115,7 +130,9 @@ export const resolveGuest = (slug, searchParams) => {
     const queryPrefix = searchParams.get('prefix') || searchParams.get('xungho') || searchParams.get('chucvu');
 
     if (queryName) {
-      baseGuest.name = queryName.trim();
+      const trimmedName = queryName.trim();
+      // Nếu queryName là một ID có trong guestList, lấy tên thật, ngược lại lấy chính queryName
+      baseGuest.name = guestList[trimmedName] || trimmedName;
     }
     if (queryRole) {
       baseGuest.role = queryRole.trim();

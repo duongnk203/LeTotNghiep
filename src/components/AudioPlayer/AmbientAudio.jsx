@@ -26,7 +26,8 @@ export const AmbientAudio = ({ autoPlayTrigger }) => {
       osc.frequency.setValueAtTime(freq, now + i * 0.08);
 
       gain.gain.setValueAtTime(0, now);
-      gain.gain.linearRampToValueAtTime(0.04, now + 0.5 + i * 0.08);
+      // Increased volume from 0.04 to 0.15 for better audibility, especially on mobile devices
+      gain.gain.linearRampToValueAtTime(0.15, now + 0.5 + i * 0.08);
       gain.gain.exponentialRampToValueAtTime(0.0001, now + 3.8);
 
       osc.connect(gain);
