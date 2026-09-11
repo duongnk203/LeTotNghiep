@@ -1,0 +1,307 @@
+:root {
+  --color-bg: #F8F3EA;
+  --color-bg-alt: #F1EADC;
+  --color-card-bg: #FFFFFF;
+  --color-navy: #3D302A;
+  --color-navy-dark: #261D19;
+  --color-navy-light: #52423A;
+  --color-ivory: #F8F3EA;
+  --color-ivory-muted: #7A695F;
+  --color-gold-light: #C9A86A;
+  --color-gold: #B08A4A;
+  --color-gold-deep: #B08A4A;
+  --color-gold-bronze: #8E6D34;
+  --color-text-main: #3D302A;
+  --color-text-muted: #7A695F;
+  --color-border-gold: rgba(176, 138, 74, 0.35);
+  --color-border-gold-hover: rgba(176, 138, 74, 0.75);
+
+  /* Phông chữ sang trọng Cormorant Garamond chủ đạo theo yêu cầu */
+  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-playfair: 'Playfair Display', serif;
+  --font-lora: 'Lora', serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+
+  /* Font phân bổ: Cormorant Garamond làm chủ đạo */
+  --font-title: 'Cormorant Garamond', serif;
+  --font-name: 'Cormorant Garamond', serif;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-quote: 'Cormorant Garamond', serif;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-script: 'Cormorant Garamond', serif;
+
+  /* Aliases tương thích */
+  --font-cinzel: 'Cormorant Garamond', serif;
+  --font-baskerville: 'Cormorant Garamond', serif;
+  --font-bodoni: 'Cormorant Garamond', serif;
+
+  --shadow-gold-soft: 0 10px 30px -10px rgba(176, 138, 74, 0.2);
+  --shadow-gold-strong: 0 15px 45px -5px rgba(176, 138, 74, 0.3);
+  --shadow-card: 0 18px 45px -10px rgba(130, 110, 95, 0.14);
+  --border-radius-card: 14px;
+}
+
+/* Base resets & typography */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  font-family: var(--font-cormorant);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(176, 138, 74, 0.15) 0%, transparent 55%),
+    radial-gradient(circle at 100% 35%, rgba(241, 234, 220, 0.8) 0%, transparent 60%),
+    radial-gradient(circle at 0% 75%, rgba(245, 239, 227, 0.8) 0%, transparent 60%);
+  background-attachment: fixed;
+}
+
+/* Champagne Gold Gradient Text */
+.gold-text {
+  background: linear-gradient(135deg, #B08A4A 0%, #D4B982 45%, #8E6D34 85%, #C9A86A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gold-text-shimmer {
+  background: linear-gradient(
+    90deg,
+    #8E6D34 0%,
+    #B08A4A 25%,
+    #E2CA9A 50%,
+    #B08A4A 75%,
+    #8E6D34 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Subtle grain overlay */
+.paper-grain {
+  position: relative;
+}
+
+.paper-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  border-radius: inherit;
+}
+
+/* Light Luxury Double Gold Border Card (Khung viền vàng kép nền sáng mỹ thuật) */
+.navy-gold-card {
+  background: #FAF6EF;
+  color: #3D302A;
+  position: relative;
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: 
+    0 25px 65px -12px rgba(130, 110, 95, 0.22),
+    0 0 35px rgba(176, 138, 74, 0.16);
+  border: 3px solid #B08A4A;
+  border-image: linear-gradient(135deg, #D4B982 0%, #B08A4A 35%, #8E6D34 65%, #D4B982 100%) 3;
+}
+
+.navy-gold-inner-frame {
+  background: #FFFFFF;
+  border: 2px solid #B08A4A;
+  border-image: linear-gradient(135deg, #D4B982 0%, #B08A4A 35%, #8E6D34 65%, #D4B982 100%) 2;
+  padding: clamp(28px, 5vw, 52px) clamp(20px, 4vw, 42px);
+  position: relative;
+  text-align: center;
+  box-shadow: inset 0 0 30px rgba(176, 138, 74, 0.04);
+}
+
+/* Card with gold luxury border on Light Theme */
+.luxury-card {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border-gold);
+  border-radius: var(--border-radius-card);
+  box-shadow: var(--shadow-card), inset 0 0 20px rgba(176, 138, 74, 0.03);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--color-text-main);
+}
+
+.luxury-card:hover {
+  border-color: var(--color-border-gold-hover);
+  box-shadow: var(--shadow-gold-soft), inset 0 0 25px rgba(176, 138, 74, 0.06);
+}
+
+/* Luxury Paper Card (Cream/Ivory Look) */
+.ivory-paper {
+  background: #FFFFFF;
+  color: #3D302A;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 15px 35px rgba(130, 110, 95, 0.16), inset 0 0 40px rgba(176, 138, 74, 0.04);
+  border: 1px solid rgba(176, 138, 74, 0.35);
+}
+
+/* Thin double gold line border inside card */
+.ornament-border {
+  border: 1px solid rgba(176, 138, 74, 0.4);
+  padding: 24px;
+  position: relative;
+}
+
+.ornament-border::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(176, 138, 74, 0.25);
+  pointer-events: none;
+}
+
+/* Corner ornaments */
+.corner-ornament {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--color-gold);
+  pointer-events: none;
+}
+.corner-ornament.tl { top: 12px; left: 12px; border-top: 1px solid; border-left: 1px solid; }
+.corner-ornament.tr { top: 12px; right: 12px; border-top: 1px solid; border-right: 1px solid; }
+.corner-ornament.bl { bottom: 12px; left: 12px; border-bottom: 1px solid; border-left: 1px solid; }
+.corner-ornament.br { bottom: 12px; right: 12px; border-bottom: 1px solid; border-right: 1px solid; }
+
+/* Luxury Button */
+.btn-gold {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #C9A86A 0%, #B08A4A 50%, #946E2E 100%);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-family: var(--font-cormorant);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 1.05rem;
+  padding: 14px 34px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(176, 138, 74, 0.32);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.btn-gold::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: 0.5s;
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(176, 138, 74, 0.45);
+}
+
+.btn-gold:hover::before {
+  left: 100%;
+}
+
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+.btn-outline-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-gold);
+  border: 1.5px solid var(--color-gold);
+  border-radius: 40px;
+  padding: 12px 28px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: var(--font-cormorant);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-outline-gold:hover {
+  background: var(--color-gold);
+  color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(176, 138, 74, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Section Divider */
+.gold-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 32px auto;
+  width: 100%;
+  max-width: 260px;
+}
+
+.gold-divider .line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+.gold-divider .diamond {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-gold);
+  transform: rotate(45deg);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F3EFE8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(184, 134, 11, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(184, 134, 11, 0.7);
+}

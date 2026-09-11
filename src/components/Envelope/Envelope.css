@@ -1,0 +1,307 @@
+.envelope-scene-wrapper {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  perspective: 1200px;
+  overflow: hidden;
+}
+
+/* Ambient background glow & stars */
+.envelope-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(11, 13, 19, 0) 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.envelope-container {
+  position: relative;
+  width: 380px;
+  max-width: 92vw;
+  height: 255px;
+  perspective: 1200px;
+  z-index: 5;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (max-width: 480px) {
+  .envelope-container {
+    width: 320px;
+    height: 215px;
+  }
+}
+
+.envelope-3d {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+/* Envelope Body Base */
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #FDFBF7 0%, #EDE7DB 100%);
+  border-radius: 8px;
+  box-shadow: 
+    0 25px 50px -12px rgba(145, 130, 105, 0.25),
+    0 0 35px rgba(212, 175, 55, 0.16),
+    inset 0 0 1px 1px rgba(184, 134, 11, 0.35);
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Letter inside styled in Light Ivory & Gold double border */
+.envelope-card-inside {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  right: 12px;
+  height: 235px;
+  background: #FFFFFF;
+  border-radius: 4px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(145, 130, 105, 0.2);
+  border: 2px solid #C5A059;
+  z-index: 3;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease;
+  transform-style: preserve-3d;
+  color: #18202F;
+  text-align: center;
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .envelope-card-inside {
+    height: 195px;
+    padding: 6px;
+  }
+}
+
+/* State when card slides out */
+.envelope-3d.is-open .envelope-card-inside {
+  transform: translateY(-110px) translateZ(50px) scale(1.05);
+  box-shadow: 0 30px 60px rgba(145, 130, 105, 0.35), 0 0 35px rgba(212, 175, 55, 0.25);
+  pointer-events: auto;
+}
+
+/* Envelope Front Pockets (Left, Right, Bottom Triangles in Kem Ivory #F8F3EA) */
+.envelope-pocket-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 190px solid transparent;
+  border-right: 190px solid transparent;
+  border-bottom: 145px solid #EFE8DA;
+  z-index: 6;
+  filter: drop-shadow(0 -3px 6px rgba(130, 110, 95, 0.16));
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .envelope-pocket-bottom {
+    border-left-width: 160px;
+    border-right-width: 160px;
+    border-bottom-width: 122px;
+  }
+}
+
+.envelope-pocket-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 127px solid transparent;
+  border-bottom: 128px solid transparent;
+  border-left: 195px solid #E7DFCFA;
+  border-left: 195px solid #E7DFCF;
+  z-index: 5;
+  filter: drop-shadow(3px 0 6px rgba(130, 110, 95, 0.14));
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .envelope-pocket-left {
+    border-top-width: 107px;
+    border-bottom-width: 108px;
+    border-left-width: 165px;
+  }
+}
+
+.envelope-pocket-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 127px solid transparent;
+  border-bottom: 128px solid transparent;
+  border-right: 195px solid #DFD7C5;
+  z-index: 5;
+  filter: drop-shadow(-3px 0 6px rgba(130, 110, 95, 0.14));
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .envelope-pocket-right {
+    border-top-width: 107px;
+    border-bottom-width: 108px;
+    border-right-width: 165px;
+  }
+}
+
+/* Envelope Flap (Top triangle that opens upward) */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 190px solid transparent;
+  border-right: 190px solid transparent;
+  border-top: 135px solid #F8F3EA;
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 7;
+  filter: drop-shadow(0 4px 10px rgba(130, 110, 95, 0.18));
+}
+
+@media (max-width: 480px) {
+  .envelope-flap {
+    border-left-width: 160px;
+    border-right-width: 160px;
+    border-top-width: 105px;
+  }
+}
+
+/* Flap Open */
+.envelope-3d.is-open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+/* Wax Seal on the Flap */
+.wax-seal {
+  position: absolute;
+  top: 115px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #9E1B2C, #670815 75%, #42020B);
+  box-shadow: 
+    0 6px 15px rgba(0, 0, 0, 0.4),
+    0 0 10px rgba(158, 27, 44, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.25),
+    inset 0 -2px 5px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F8D387;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 2px solid rgba(248, 211, 135, 0.4);
+}
+
+@media (max-width: 480px) {
+  .wax-seal {
+    top: 92px;
+    width: 48px;
+    height: 48px;
+    font-size: 19px;
+  }
+}
+
+.wax-seal:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.envelope-3d.is-open .wax-seal {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.6);
+}
+
+/* Front Badge / Label */
+.envelope-label {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8;
+  text-align: center;
+  pointer-events: none;
+  width: 88%;
+  transition: opacity 0.5s ease;
+}
+
+@media (max-width: 480px) {
+  .envelope-label {
+    bottom: 16px;
+    width: 90%;
+  }
+}
+
+.envelope-3d.is-open .envelope-label {
+  opacity: 0;
+}
+
+.envelope-label-tag {
+  font-family: var(--font-cormorant);
+  font-size: 0.82rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #B08A4A;
+  margin-bottom: 2px;
+  font-weight: 700;
+}
+
+@media (max-width: 480px) {
+  .envelope-label-tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 2px;
+  }
+}
+
+.envelope-label-name {
+  font-family: var(--font-cormorant);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #3D302A;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 480px) {
+  .envelope-label-name {
+    font-size: 1.25rem;
+  }
+}
