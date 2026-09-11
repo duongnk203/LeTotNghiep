@@ -11,5 +11,7 @@ export const guestList = {
   "9": "Bạn Mai Linh",
   "10": "AE Xóm Trọ",
   "11": "Bạn Mộng Linh",
+  "12": "Bạn Vương Thảo",
+  "13": "Bạn Thuỳ Dương"
   // Hãy thêm người nhận của bạn vào đây theo format: "ID": "Tên Hiển Thị",
 };
